@@ -1,0 +1,13 @@
+# ????????
+server:
+  port: 8080
+
+spring:
+  datasource:
+    username: root
+    password: runi2003
+    url: jdbc:mysql:///hit
+
+logging:
+  level:
+    com.system: debug
