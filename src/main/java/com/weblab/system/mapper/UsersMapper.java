@@ -2,6 +2,9 @@ package com.weblab.system.mapper;
 
 import com.weblab.system.entity.Users;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.weblab.system.entity.vo.LoginUserVo;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface UsersMapper extends BaseMapper<Users> {
 
+    List<LoginUserVo> usLogin(LoginUserVo userVo);
 }

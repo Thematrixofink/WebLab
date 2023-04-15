@@ -2,6 +2,10 @@ package com.weblab.system.mapper;
 
 import com.weblab.system.entity.Admin;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.weblab.system.entity.vo.LoginUserVo;
+import lombok.extern.java.Log;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +17,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface AdminMapper extends BaseMapper<Admin> {
 
+    List<LoginUserVo> adLogin(LoginUserVo admin);
 }

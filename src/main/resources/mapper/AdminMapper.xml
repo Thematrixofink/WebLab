@@ -2,4 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.weblab.system.mapper.AdminMapper">
 
+    <resultMap id="LoginVo" type="com.weblab.system.entity.vo.LoginUserVo">
+        <result column="name" property="username"/>
+        <result column="password" property="password"/>
+    </resultMap>
+
+    <select id="adLogin" resultMap="LoginVo">
+        select name,password from admin where name =#{username} and password = #{password}
+    </select>
 </mapper>
