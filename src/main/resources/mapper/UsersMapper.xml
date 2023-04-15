@@ -5,9 +5,11 @@
     <resultMap id="LoginVo" type="com.weblab.system.entity.vo.LoginUserVo">
         <result column="user_name" property="username"/>
         <result column="password" property="password"/>
+        <result column="status" property="identity"/>
+        <result column="if_judges" property="ifJudges"/>
     </resultMap>
 
     <select id="usLogin" resultMap="LoginVo">
-        select user_name ,password from users where user_name =#{username} and password = #{password}
+        select user_name ,password,status,if_judges from users where user_name =#{username} and password = #{password}
     </select>
 </mapper>

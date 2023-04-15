@@ -29,10 +29,22 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
     @Override
     public Map<String, Object> UsersLogin(LoginUserVo userVo) {
         List<LoginUserVo> login = usersMapper.usLogin(userVo);
+        LoginUserVo user = login.get(0);
         if(login.size()>0){
             String key = "user:"+ UUID.randomUUID();
             Map<String, Object> data = new HashMap<>();
             data.put("token",key);
+            if(user.getIdentity().equals("1")) {
+                data.put("identify","教师");
+                data.put("ifJudges",1);
+            }else{
+                data.put("identify","学生");
+                if(user.getIfJudges().equals(1)){
+                    data.put("ifJudges",1);
+                }else{
+                    data.put("ifJudges",0);
+                }
+            }
             return data;
         }
         return null;
