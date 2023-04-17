@@ -17,4 +17,6 @@ import java.util.List;
 public interface UsersMapper extends BaseMapper<Users> {
 
     List<LoginUserVo> usLogin(LoginUserVo userVo);
+
+
 }

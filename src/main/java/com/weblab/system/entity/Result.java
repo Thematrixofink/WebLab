@@ -3,6 +3,7 @@ package com.weblab.system.entity;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import jakarta.validation.constraints.NotBlank;
 
 /**
  * <p>
@@ -18,18 +19,25 @@ public class Result implements Serializable {
     private static final long serialVersionUID = 1L;
 
     //组号
+    @NotBlank(message = "组号不能为空！")
     private Integer groupId;
     //评委姓名
+    @NotBlank(message = "评委姓名不能为空！")
     private String judgesName;
     //总成绩
+    @NotBlank(message = "总成绩不能为空！")
     private double score;
     //工作量成绩
+    @NotBlank(message = "分工成绩不能为空！")
     private double workScore;
     //完成度成绩
+    @NotBlank(message = "完成度成绩不能为空！")
     private double cmtScore;
     //界面设计
+    @NotBlank(message = "界面设计成绩不能为空！")
     private double uiScore;
     //分工设计
+    @NotBlank(message = "分工成绩不能为空！")
     private double divScore;
 
     public Integer getGroupId() {

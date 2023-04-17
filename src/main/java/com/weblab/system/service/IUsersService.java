@@ -16,4 +16,9 @@ import java.util.Map;
  */
 public interface IUsersService extends IService<Users> {
     public Map<String, Object> UsersLogin(LoginUserVo userVo);
+
+    Map<String, Object> setPassword(LoginUserVo userVo);
+
+    Map<String, Object> getScore(Integer groupId);
 }
+
