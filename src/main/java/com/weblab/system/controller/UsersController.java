@@ -43,7 +43,7 @@ public class UsersController {
         return Result.success("修改成功!");
     }
 
-    @GetMapping("/score")
+    @GetMapping("/student/score")
     public Result<Map<String,Object>> lookScore(@RequestParam("groupId") Integer groupId){
         Map<String,Object> data = usersService.getScore(groupId);
         if(data == null){
@@ -51,6 +51,11 @@ public class UsersController {
         }else{
             return Result.success(data);
         }
+    }
+
+    @GetMapping("/judge/getVideo")
+    public Result<Map<String,Object>> lookVideo(){
+
     }
 
 }
