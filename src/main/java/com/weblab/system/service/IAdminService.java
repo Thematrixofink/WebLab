@@ -24,4 +24,6 @@ public interface IAdminService extends IService<Admin> {
     public String setPassword(Admin admin);
 
     List<Users> getUsers();
+
+    Users getUser(String name);
 }

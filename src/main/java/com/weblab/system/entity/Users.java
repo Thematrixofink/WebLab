@@ -3,6 +3,9 @@ package com.weblab.system.entity;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * <p>
@@ -13,6 +16,8 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2023-04-12
  */
 @ApiModel(value = "Users对象", description = "")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -28,6 +33,7 @@ public class Users implements Serializable {
     private Integer ifJudges;
     //组号
     private Integer groupId;
+
 
     public String getUserName() {
         return userName;

@@ -21,4 +21,6 @@ public interface AdminMapper extends BaseMapper<Admin> {
     List<LoginUserVo> adLogin(LoginUserVo admin);
 
     List<Users> getUsers();
+
+    Users getUserByName(String name);
 }

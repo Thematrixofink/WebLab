@@ -61,4 +61,15 @@ public class AdminController {
         return Result.success(data,"查询成功");
     }
 
+    // 根据用户名获取用户
+    @GetMapping("/users/{username}")
+    public Result<Users> getUser(@PathVariable("username") String username){
+        Users data = adminService.getUser(username);
+
+        if(data == null){
+            return Result.fail(20004,"没有查询到用户！");
+        }
+
+        return Result.success(data,"查询成功");
+    }
 }

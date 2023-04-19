@@ -63,4 +63,22 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
 
         return null;
     }
+
+    @Override
+    public Users getUser(String name){
+        Users user = adminMapper.getUserByName(name);
+
+        Users data = new Users(user.getUserName(),
+                user.getRealName(),
+                null,
+                user.getStatus(),
+                user.getIfJudges(),
+                user.getGroupId());
+
+        if(data != null){
+            return data;
+        }
+
+        return null;
+    }
 }
