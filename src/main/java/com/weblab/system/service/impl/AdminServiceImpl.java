@@ -1,17 +1,15 @@
 package com.weblab.system.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.weblab.system.entity.Admin;
+import com.weblab.system.entity.Users;
 import com.weblab.system.entity.vo.LoginUserVo;
 import com.weblab.system.mapper.AdminMapper;
 import com.weblab.system.service.IAdminService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.*;
 
@@ -50,6 +48,17 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         int update = adminMapper.update(null, updateWrapper);
         if(update == 1){
             return "修改成功";
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<Users> getUsers(){
+        List<Users> data = adminMapper.getUsers();
+
+        if(data.size() > 0){
+            return data;
         }
 
         return null;
