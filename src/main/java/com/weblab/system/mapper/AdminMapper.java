@@ -23,4 +23,6 @@ public interface AdminMapper extends BaseMapper<Admin> {
     List<Users> getUsers();
 
     Users getUserByName(String name);
+
+    int resetUserPassword(String name);
 }

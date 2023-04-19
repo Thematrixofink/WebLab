@@ -81,4 +81,15 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
 
         return null;
     }
+
+    @Override
+    public String resetPassword(String name) {
+        int status = adminMapper.resetUserPassword(name);
+
+        if(status == 1){
+            return "重置成功";
+        }
+
+        return null;
+    }
 }

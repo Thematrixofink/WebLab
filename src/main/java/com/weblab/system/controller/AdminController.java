@@ -72,4 +72,17 @@ public class AdminController {
 
         return Result.success(data,"查询成功");
     }
+
+    // 重置用户密码
+    @PutMapping("/users/{username}")
+    public Result<String> resetPassword(@PathVariable("username") String username){
+        String data = adminService.resetPassword(username);
+
+        if(data == null){
+            return Result.fail(20004,"没有查询到用户！");
+        }
+
+        return Result.success(data);
+    }
+
 }

@@ -28,4 +28,7 @@
         select * from users where user_name = #{userName}
     </select>
 
+    <update id="resetUserPassword">
+        update users set password = #{username} where user_name = #{username}
+    </update>
 </mapper>
