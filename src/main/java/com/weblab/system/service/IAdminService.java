@@ -18,4 +18,6 @@ import java.util.Objects;
 public interface IAdminService extends IService<Admin> {
 
     public Map<String, Object> AdminLogin(LoginUserVo userVo);
+
+    public String setPassword(Admin admin);
 }

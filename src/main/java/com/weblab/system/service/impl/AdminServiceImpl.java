@@ -1,6 +1,9 @@
 package com.weblab.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.weblab.system.entity.Admin;
 import com.weblab.system.entity.vo.LoginUserVo;
 import com.weblab.system.mapper.AdminMapper;
@@ -35,6 +38,20 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
             data.put("token",key);
             return data;
         }
+        return null;
+    }
+
+    @Override
+    public String setPassword(Admin admin) {
+        LambdaUpdateWrapper<Admin> updateWrapper = new UpdateWrapper<Admin>().lambda();
+        updateWrapper.eq(Admin::getName,admin.getName());
+        updateWrapper.set(Admin::getPassword,admin.getPassword());
+
+        int update = adminMapper.update(null, updateWrapper);
+        if(update == 1){
+            return "修改成功";
+        }
+
         return null;
     }
 }

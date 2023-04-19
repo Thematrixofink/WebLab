@@ -1,14 +1,12 @@
 package com.weblab.system.controller;
 
 import com.weblab.common.vo.Result;
+import com.weblab.system.entity.Admin;
 import com.weblab.system.entity.vo.LoginUserVo;
 import com.weblab.system.service.IAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
@@ -34,6 +32,17 @@ public class AdminController {
             return Result.success(data);
         }
         return Result.fail(20002,"用户名或密码错误!");
+    }
+
+    @PutMapping("/Password")
+    public Result<Map<String,Object>> changePassword(@RequestBody Admin admin){
+        String data = adminService.setPassword(admin);
+
+        if(data==null){
+            return Result.fail(20003,"此用户不存在！!");
+        }
+
+        return Result.success(data);
     }
 
 }
