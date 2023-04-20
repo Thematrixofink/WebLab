@@ -55,7 +55,7 @@ public class UsersController {
 
     @GetMapping("/judge/getVideo")
     public Result<Map<String,Object>> lookVideo(){
-
+        return null;
     }
 
 }

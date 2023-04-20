@@ -1,14 +1,15 @@
 package com.weblab.system.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.weblab.system.entity.Admin;
+import com.weblab.system.entity.Users;
 import com.weblab.system.entity.vo.LoginUserVo;
 import com.weblab.system.mapper.AdminMapper;
 import com.weblab.system.service.IAdminService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.*;
 
@@ -35,6 +36,60 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
             data.put("token",key);
             return data;
         }
+        return null;
+    }
+
+    @Override
+    public String setPassword(Admin admin) {
+        LambdaUpdateWrapper<Admin> updateWrapper = new UpdateWrapper<Admin>().lambda();
+        updateWrapper.eq(Admin::getName,admin.getName());
+        updateWrapper.set(Admin::getPassword,admin.getPassword());
+
+        int update = adminMapper.update(null, updateWrapper);
+        if(update == 1){
+            return "修改成功";
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<Users> getUsers(){
+        List<Users> data = adminMapper.getUsers();
+
+        if(data.size() > 0){
+            return data;
+        }
+
+        return null;
+    }
+
+    @Override
+    public Users getUser(String name){
+        Users user = adminMapper.getUserByName(name);
+
+        Users data = new Users(user.getUserName(),
+                user.getRealName(),
+                null,
+                user.getStatus(),
+                user.getIfJudges(),
+                user.getGroupId());
+
+        if(data != null){
+            return data;
+        }
+
+        return null;
+    }
+
+    @Override
+    public String resetPassword(String name) {
+        int status = adminMapper.resetUserPassword(name);
+
+        if(status == 1){
+            return "重置成功";
+        }
+
         return null;
     }
 }

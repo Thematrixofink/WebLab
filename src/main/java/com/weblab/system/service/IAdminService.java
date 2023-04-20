@@ -2,8 +2,10 @@ package com.weblab.system.service;
 
 import com.weblab.system.entity.Admin;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.weblab.system.entity.Users;
 import com.weblab.system.entity.vo.LoginUserVo;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -18,4 +20,12 @@ import java.util.Objects;
 public interface IAdminService extends IService<Admin> {
 
     public Map<String, Object> AdminLogin(LoginUserVo userVo);
+
+    public String setPassword(Admin admin);
+
+    List<Users> getUsers();
+
+    Users getUser(String name);
+
+    String resetPassword(String name);
 }

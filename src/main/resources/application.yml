@@ -5,7 +5,7 @@ server:
 spring:
   datasource:
     username: root
-    password: runi2003
+    password: tb030612 #runi2003
     url: jdbc:mysql:///hit
 
 logging:
