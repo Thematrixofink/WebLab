@@ -1,10 +1,16 @@
 package com.weblab.system.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.weblab.system.entity.Result;
 import com.weblab.system.mapper.ResultMapper;
 import com.weblab.system.service.IResultService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -16,5 +22,31 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ResultServiceImpl extends ServiceImpl<ResultMapper, Result> implements IResultService {
+    @Autowired
+    private ResultMapper resultMapper;
 
+    @Override
+    public Map<String, Object> setResult(Result result) {
+        QueryWrapper<Result> wrapper = new QueryWrapper<>();
+        wrapper.eq("judges_name",result.getJudgesName());
+        wrapper.eq("group_id",result.getGroupId());
+        Result results = resultMapper.selectOne(wrapper);
+        Map<String,Object> data = new HashMap<>();
+        if(results!=null){
+            return null;
+        }
+        double cmtScore  = result.getCmtScore();
+        double divScore  = result.getDivScore();
+        double uiScore   = result.getUiScore();
+        double workScore = result.getWorkScore();
+        double finalScore= workScore*(0.4) + uiScore*(0.1) + divScore*(0.1) + cmtScore*(0.4);
+        result.setScore(finalScore);
+        int insert = resultMapper.insert(result);
+        if(insert == 1){
+            data.put("最终成绩",finalScore);
+            return data;
+        }else{
+            return null;
+        }
+    }
 }

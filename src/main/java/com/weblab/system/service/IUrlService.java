@@ -1,7 +1,11 @@
 package com.weblab.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.weblab.system.entity.Result;
+import com.weblab.system.entity.Url;
 
-public interface IUrlService extends IService<Result> {
+import java.util.Map;
+
+public interface IUrlService extends IService<Url> {
+    Map<String, Object> getAll();
+
 }
