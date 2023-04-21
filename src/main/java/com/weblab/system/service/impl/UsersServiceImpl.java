@@ -1,9 +1,8 @@
 package com.weblab.system.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.weblab.system.entity.Result;
+import com.weblab.system.entity.Score;
 import com.weblab.system.entity.Users;
 import com.weblab.system.entity.vo.LoginUserVo;
 import com.weblab.system.mapper.ResultMapper;
@@ -79,20 +78,20 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
 
     @Override
     public Map<String, Object> getScore(Integer groupId) {
-        QueryWrapper<Result> wrapper = new QueryWrapper<>();
+        QueryWrapper<Score> wrapper = new QueryWrapper<>();
         wrapper.eq("group_id",groupId);
-        List<Result> results = resultMapper.selectList(wrapper);
+        List<Score> results = resultMapper.selectList(wrapper);
         if(results.size() == 0){
             return null;
         }else{
             //说明有这个成绩
             Map<String,Object> map = new HashMap<>();
-            List<Result> re1 = new ArrayList<>(results);
+            List<Score> re1 = new ArrayList<>(results);
             map.put("详细成绩",re1);
             //在计算出总成绩
-            Comparator<Result> Comparator = new Comparator<>() {
+            Comparator<Score> Comparator = new Comparator<>() {
                 @Override
-                public int compare(Result o1, Result o2) {
+                public int compare(Score o1, Score o2) {
                     double r = o1.getScore() - o2.getScore();
                     return r > 0 ? 1 : -1;
                 }
@@ -102,7 +101,7 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
             results.remove(results.size()-1);
             //删去了最高分和最低分
             double sum = 0.0;
-            for (Result r :
+            for (Score r :
                     results) {
                 sum = sum + r.getScore();
             }

@@ -1,6 +1,5 @@
 package com.weblab.system.mapper;
 
-import com.weblab.system.entity.Result;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.weblab.system.entity.Url;
 

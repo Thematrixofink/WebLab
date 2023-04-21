@@ -2,7 +2,6 @@ package com.weblab.system.entity;
 
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import jakarta.validation.constraints.NotBlank;
 
 /**
@@ -14,7 +13,7 @@ import jakarta.validation.constraints.NotBlank;
  * @since 2023-04-12
  */
 @ApiModel(value = "Result对象", description = "")
-public class Result implements Serializable {
+public class Score implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

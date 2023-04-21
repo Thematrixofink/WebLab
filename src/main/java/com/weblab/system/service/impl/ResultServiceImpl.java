@@ -1,7 +1,7 @@
 package com.weblab.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.weblab.system.entity.Result;
+import com.weblab.system.entity.Score;
 import com.weblab.system.mapper.ResultMapper;
 import com.weblab.system.service.IResultService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,16 +20,16 @@ import java.util.Map;
  * @since 2023-04-12
  */
 @Service
-public class ResultServiceImpl extends ServiceImpl<ResultMapper, Result> implements IResultService {
+public class ResultServiceImpl extends ServiceImpl<ResultMapper, Score> implements IResultService {
     @Autowired
     private ResultMapper resultMapper;
 
     @Override
-    public Map<String, Object> setResult(Result result) {
-        QueryWrapper<Result> wrapper = new QueryWrapper<>();
+    public Map<String, Object> setResult(Score result) {
+        QueryWrapper<Score> wrapper = new QueryWrapper<>();
         wrapper.eq("judges_name",result.getJudgesName());
         wrapper.eq("group_id",result.getGroupId());
-        Result results = resultMapper.selectOne(wrapper);
+        Score results = resultMapper.selectOne(wrapper);
         Map<String,Object> data = new HashMap<>();
         if(results!=null){
             return null;

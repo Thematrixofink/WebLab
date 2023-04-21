@@ -1,6 +1,6 @@
 package com.weblab.system.controller;
 
-import com.weblab.common.vo.returnResult;
+import com.weblab.common.vo.Result;
 import com.weblab.system.entity.vo.LoginUserVo;
 import com.weblab.system.service.IAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +28,12 @@ public class AdminController {
     private IAdminService adminService;
 
     @PostMapping("/login")
-    public returnResult<Map<String,Object>> adminLogin(@Validated @RequestBody LoginUserVo user){
+    public Result<Map<String,Object>> adminLogin(@Validated @RequestBody LoginUserVo user){
         Map<String, Object> data = adminService.AdminLogin(user);
         if(data!=null) {
-            return returnResult.success(data);
+            return Result.success(data);
         }
-        return returnResult.fail(20002,"用户名或密码错误!");
+        return Result.fail(20002,"用户名或密码错误!");
     }
 
 }

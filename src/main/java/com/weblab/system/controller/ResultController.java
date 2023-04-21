@@ -1,6 +1,6 @@
 package com.weblab.system.controller;
 
-import com.weblab.system.entity.Result;
+import com.weblab.system.entity.Score;
 import com.weblab.system.service.IResultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,12 +27,12 @@ public class ResultController {
     private IResultService resultService;
 
     @PostMapping("/setResult")
-    public returnResult<Map<String,Object>> setResult(@RequestBody Result result){
+    public Result<Map<String,Object>> setResult(@RequestBody Score result){
         Map<String,Object> data = resultService.setResult(result);
         if(data == null){
-            return returnResult.fail("你已经对改组进行过打分！请勿再次评分");
+            return Result.fail("你已经对改组进行过打分！请勿再次评分");
         }
-        return returnResult.success(data);
+        return Result.success(data);
     }
 
 }

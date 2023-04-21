@@ -1,6 +1,6 @@
 package com.weblab.system.mapper;
 
-import com.weblab.system.entity.Result;
+import com.weblab.system.entity.Score;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author inkslab
  * @since 2023-04-12
  */
-public interface ResultMapper extends BaseMapper<Result> {
+public interface ResultMapper extends BaseMapper<Score> {
 
 }
