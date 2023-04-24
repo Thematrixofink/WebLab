@@ -74,7 +74,6 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
                 user.getStatus(),
                 user.getIfJudges(),
                 user.getGroupId());
-
         if(data != null){
             return data;
         }

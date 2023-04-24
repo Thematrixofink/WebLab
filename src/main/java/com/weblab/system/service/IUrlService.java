@@ -1,7 +1,15 @@
 package com.weblab.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.weblab.system.entity.Result;
+import com.weblab.system.entity.Url;
 
-public interface IUrlService extends IService<Result> {
+import java.util.List;
+import java.util.Map;
+
+public interface IUrlService extends IService<Url> {
+    List<Url> getAll();
+
+    Map<String, Object> setUrl(Integer groupId, String videoUrl, String projectUrl);
+
+    Map<String, Object> changeUrl(Integer groupId, String videoUrl, String projectUrl);
 }

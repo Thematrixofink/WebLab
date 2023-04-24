@@ -2,7 +2,8 @@ package com.weblab.system.entity;
 
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 /**
@@ -14,7 +15,7 @@ import jakarta.validation.constraints.NotBlank;
  * @since 2023-04-12
  */
 @ApiModel(value = "Result对象", description = "")
-public class Result implements Serializable {
+public class Score implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -39,7 +40,9 @@ public class Result implements Serializable {
     //分工设计
     @NotBlank(message = "分工成绩不能为空！")
     private double divScore;
-
+    @Max(1)
+    @Min(0)
+    private Integer status;
     public Integer getGroupId() {
         return groupId;
     }
@@ -96,16 +99,25 @@ public class Result implements Serializable {
         this.divScore = divScore;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "Result{" +
-            "groupId = " + groupId +
-            ", judgesName = " + judgesName +
-            ", score = " + score +
-            ", workScore = " + workScore +
-            ", cmtScore = " + cmtScore +
-            ", uiScore = " + uiScore +
-            ", divScore = " + divScore +
-        "}";
+        return "Score{" +
+                "groupId=" + groupId +
+                ", judgesName='" + judgesName + '\'' +
+                ", score=" + score +
+                ", workScore=" + workScore +
+                ", cmtScore=" + cmtScore +
+                ", uiScore=" + uiScore +
+                ", divScore=" + divScore +
+                ", status=" + status +
+                '}';
     }
 }

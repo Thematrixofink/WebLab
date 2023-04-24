@@ -1,7 +1,7 @@
 package com.weblab.system.mapper;
 
-import com.weblab.system.entity.Result;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.weblab.system.entity.Url;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author inkslab
  * @since 2023-04-12
  */
-public interface UrlMapper extends BaseMapper<Result> {
+public interface UrlMapper extends BaseMapper<Url> {
 
 }
