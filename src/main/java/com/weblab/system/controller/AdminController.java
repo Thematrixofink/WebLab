@@ -11,18 +11,17 @@ import com.weblab.system.service.IResultService;
 import com.weblab.system.service.IUrlService;
 import com.weblab.system.service.IUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import java.util.HashMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
-
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -88,6 +87,7 @@ public class AdminController {
 
         if(data == null){
             return Result.fail(20012,"没有查询到用户！");
+
         }
 
         return Result.success(data,"查询成功");
@@ -161,4 +161,15 @@ public class AdminController {
         }
         return Result.success(data);
     }
+    @PutMapping("/users/{username}")
+    public Result<String> resetPassword(@PathVariable("username") String username){
+        String data = adminService.resetPassword(username);
+
+        if(data == null){
+            return Result.fail(20004,"没有查询到用户！");
+        }
+
+        return Result.success(data);
+    }
+
 }

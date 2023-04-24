@@ -44,10 +44,12 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         LambdaUpdateWrapper<Admin> updateWrapper = new UpdateWrapper<Admin>().lambda();
         updateWrapper.eq(Admin::getName,admin.getName());
         updateWrapper.set(Admin::getPassword,admin.getPassword());
+
         int update = adminMapper.update(null, updateWrapper);
         if(update == 1){
             return "修改成功";
         }
+
         return null;
     }
 
@@ -65,6 +67,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     @Override
     public Users getUser(String name){
         Users user = adminMapper.getUserByName(name);
+
         Users data = new Users(user.getUserName(),
                 user.getRealName(),
                 null,
@@ -74,6 +77,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         if(data != null){
             return data;
         }
+
         return null;
     }
 

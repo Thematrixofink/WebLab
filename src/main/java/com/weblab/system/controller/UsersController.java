@@ -63,8 +63,7 @@ public class UsersController {
             return Result.success(data);
         }
     }
-
-    //评委获得所有小组的url
+   //评委获得所有小组的url
     @GetMapping("/judge/getUrl")
     public Result<List<Url>> lookVideo(){
         List<Url> data = urlService.getAll();
@@ -83,6 +82,9 @@ public class UsersController {
         }else{
              return Result.success(data);
         }
+    @GetMapping("/judge/getVideo")
+    public Result<Map<String,Object>> lookVideo(){
+        return null;
     }
 
     //获取当前评委未提交的表的信息
