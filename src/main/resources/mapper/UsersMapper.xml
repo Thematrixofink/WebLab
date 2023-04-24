@@ -9,8 +9,5 @@
         <result column="if_judges" property="ifJudges"/>
     </resultMap>
 
-    <select id="usLogin" resultMap="LoginVo">
-        select user_name ,password,status,if_judges from users where user_name =#{username} and password = #{password}
-    </select>
 
 </mapper>

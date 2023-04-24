@@ -15,10 +15,13 @@ import java.util.Map;
  * @since 2023-04-12
  */
 public interface IUsersService extends IService<Users> {
-    public Map<String, Object> UsersLogin(LoginUserVo userVo);
+     Users UsersLogin(LoginUserVo userVo);
 
-    Map<String, Object> setPassword(LoginUserVo userVo);
+    Users setPassword(LoginUserVo userVo);
 
     Map<String, Object> getScore(Integer groupId);
+
+    Map<String, Object> setGroup(String username, Integer groupId);
+
 }
 

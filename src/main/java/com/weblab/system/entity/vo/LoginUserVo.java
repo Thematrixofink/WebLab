@@ -9,7 +9,7 @@ public class LoginUserVo {
     private String username;
     @NotBlank(message = "密码不能为空！")
     private String password;
-    @NotBlank(message = "身份不能为空！")
     private String identity;
+
     private Integer ifJudges;
 }

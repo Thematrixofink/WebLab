@@ -3,11 +3,8 @@ package com.weblab.system.controller;
 import com.weblab.system.entity.Score;
 import com.weblab.system.service.IResultService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import com.weblab.common.vo.*;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
@@ -26,13 +23,26 @@ public class ResultController {
     @Autowired
     private IResultService resultService;
 
-    @PostMapping("/setResult")
-    public Result<Map<String,Object>> setResult(@RequestBody Score result){
-        Map<String,Object> data = resultService.setResult(result);
+    //保存成绩
+    @PostMapping("/saveResult")
+    public Result<Score> saveResult(@RequestBody Score result){
+        Score data = resultService.saveResult(result);
         if(data == null){
-            return Result.fail("你已经对改组进行过打分！请勿再次评分");
+            return Result.fail(20010,"保存失败");
         }
         return Result.success(data);
     }
+
+    //提交成绩
+    @PostMapping("/setResult")
+    public Result<Score> setResult(@RequestParam("groupId") Integer groupId,@RequestParam("judgesName")String judgeName){
+        Score data = resultService.setResult(groupId,judgeName);
+        if(data == null){
+            return Result.fail(20009,"修改失败");
+        }else {
+            return Result.success(data);
+        }
+    }
+
 
 }

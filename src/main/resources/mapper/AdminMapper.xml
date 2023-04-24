@@ -7,7 +7,28 @@
         <result column="password" property="password"/>
     </resultMap>
 
+    <resultMap id="Users" type="com.weblab.system.entity.Users">
+        <result property="userName" column="user_name"/>
+        <result property="realName" column="real_name"/>
+        <result property="password" column="password"/>
+        <result property="status" column="status"/>
+        <result property="ifJudges" column="if_judges"/>
+        <result property="groupId" column="group_id"/>
+    </resultMap>
+
     <select id="adLogin" resultMap="LoginVo">
         select name,password from admin where name =#{username} and password = #{password}
     </select>
+
+    <select id="getUsers" resultMap="Users">
+        select * from users
+    </select>
+
+    <select id="getUserByName" resultMap="Users">
+        select * from users where user_name = #{userName}
+    </select>
+
+    <update id="resetUserPassword">
+        update users set password = #{username} where user_name = #{username}
+    </update>
 </mapper>
